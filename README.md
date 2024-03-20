@@ -1,8 +1,8 @@
-![Realworld Rust](logo.png)
-
-# Realworld Rust Axum Prisma
+# EmpLogger Rust Axum Prisma
 
 This project utilizes Rust with the [Axum](https://github.com/tokio-rs/axum) v0.7 framework along with the Prisma Client Rust to build a realworld application. For Prisma Client Rust ORM, refer to [Prisma](https://github.com/prisma/prisma) and [Prisma Client Rust Repository](https://github.com/Brendonovich/prisma-client-rust) for more information.
+
+This project build back-end for EmpLogger App, to management works history of rented employee, mainly jobs related to agriculture.
 
 ## Prerequisites
 
