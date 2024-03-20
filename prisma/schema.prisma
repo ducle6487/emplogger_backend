@@ -1,0 +1,25 @@
+generator client {
+  provider    = "cargo prisma"
+  output      = "../src/prisma.rs"
+  module_path = "generated::db"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String?    @unique
+  password  String
+  username  String    @unique
+  firstName String?
+  lastName  String?
+  bio       String?
+  image     String?
+  verified  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}

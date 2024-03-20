@@ -1,0 +1,59 @@
+[package]
+name = "emp_logger"
+version = "0.1.0"
+edition = "2021"
+
+[profile.dev]
+opt-level = 0
+debug = true
+split-debuginfo = '...' # Platform-specific.
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = 'unwind'
+incremental = true
+codegen-units = 256
+rpath = false
+
+[profile.release]
+opt-level = 3
+debug = false
+split-debuginfo = '...'  # Platform-specific.
+debug-assertions = false
+overflow-checks = false
+lto = false
+panic = 'unwind'
+incremental = false
+codegen-units = 16
+rpath = false
+
+[workspace]
+members = ["prisma-cli"]
+
+[dependencies]
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.10" }
+serde = { version = "1.0.194", features = ["derive"] }
+serde_json = "1.0.111"
+tokio = { version = "1.35.1", features = ["full"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+axum = { version = "0.7.3", features = [] }
+anyhow = "1.0.79"
+tower = { version = "0.4.13", features = ["timeout"] }
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+dotenv = "0.15.0"
+metrics = "0.22.0"
+argon2 = "0.5.2"
+
+jsonwebtoken = "9.2.0"
+
+env_logger = "0.10.1"
+itertools = "0.12.0"
+log = "0.4.20"
+rand = "0.8.5"
+thiserror = "1.0.56"
+lazy_static = "1.4.0"
+regex = "1.10.2"
+otp-rs = "0.1.1"
+lettre = "0.11.4"
+html-to-string-macro = "0.2.5"
