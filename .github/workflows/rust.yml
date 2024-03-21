@@ -16,10 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install Prisma
-      run: cargo install prisma
+    - name: Apply migaration
+      run: cargo prisma migrate deploy
     - name: Generate Prisma Client
-      run: prisma-cli
+      run: cargo prisma generate
     - name: Build
       run: cargo build
     - name: Run tests
