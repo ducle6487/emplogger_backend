@@ -16,7 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Generate Prisma Client
+      run: just generate
     - name: Build
-      run: cargo build --verbose
+      run: just build
     - name: Run tests
-      run: cargo test --verbose
+      run: just test
