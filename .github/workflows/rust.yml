@@ -37,7 +37,7 @@ jobs:
 
     # Log in to Docker
     - name: Log in to Docker
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo "$DOCKER_PASSWORD" | docker login ghcr.io -u $DOCKER_USERNAME --password-stdin
 
     # Push Docker image to GitHub Container Registry
     - name: Push Docker image
