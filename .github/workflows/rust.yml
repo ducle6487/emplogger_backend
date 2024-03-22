@@ -16,20 +16,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Apply migaration
+
+    # Prisma migration and client generation steps
+    - name: Apply migration
       run: cargo prisma migrate deploy
     - name: Generate Prisma Client
       run: cargo prisma generate
+
+    # Build Rust project
     - name: Build
-      run: cargo build
+      run: cargo build --release
+
+    # Run tests if needed
     - name: Run tests
       run: cargo test
-    - name: Build Docker image
-      run: docker build -t myapp .
 
+    # Build Docker image
+    - name: Build Docker image
+      run: docker build -t ghcr.io/yourusername/myapp:latest .
+
+    # Log in to Docker
+    - name: Log in to Docker
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+    # Push Docker image to GitHub Container Registry
     - name: Push Docker image
-      uses: docker://ghcr.io
-      with:
-        name: myapp
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      run: docker push ghcr.io/yourusername/myapp:latest
