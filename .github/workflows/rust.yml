@@ -24,3 +24,12 @@ jobs:
       run: cargo build
     - name: Run tests
       run: cargo test
+    - name: Build Docker image
+      run: docker build -t myapp .
+
+    - name: Push Docker image
+      uses: docker://ghcr.io
+      with:
+        name: myapp
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
