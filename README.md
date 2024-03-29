@@ -4,6 +4,9 @@ This project utilizes Rust with the [Axum](https://github.com/tokio-rs/axum) v0.
 
 This project build back-end for EmpLogger App, to management works history of rented employee, mainly jobs related to agriculture.
 
+## Git Flow
+![git-flow](git-flow.svg)
+
 ## Prerequisites
 
 Make sure you have the following installed:
