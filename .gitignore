@@ -3,3 +3,5 @@
 
 Dockerfile.temp
 src/prisma.rs
+
+.env.docker

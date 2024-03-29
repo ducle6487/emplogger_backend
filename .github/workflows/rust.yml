@@ -1,0 +1,32 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main", "staging", "dev" ]
+  pull_request:
+    branches: [ "main", "staging", "dev" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Prisma migration and client generation steps
+    - name: Apply migration
+      run: cargo prisma migrate deploy
+    - name: Generate Prisma Client
+      run: cargo prisma generate
+
+    # Build Rust project
+    - name: Build
+      run: cargo build --release
+
+    # Run tests if needed
+    - name: Run tests
+      run: cargo test
