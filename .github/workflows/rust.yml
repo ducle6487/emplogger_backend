@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "main", "staging", "dev" ]
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "main", "staging", "dev" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -30,15 +30,3 @@ jobs:
     # Run tests if needed
     - name: Run tests
       run: cargo test
-
-    # Build Docker image
-    - name: Build Docker image
-      run: docker build -t ghcr.io/yourusername/myapp:latest .
-
-    # Log in to Docker
-    - name: Log in to Docker
-      run: echo "$DOCKER_PASSWORD" | docker login ghcr.io -u $DOCKER_USERNAME --password-stdin
-
-    # Push Docker image to GitHub Container Registry
-    - name: Push Docker image
-      run: docker push ghcr.io/yourusername/myapp:latest
